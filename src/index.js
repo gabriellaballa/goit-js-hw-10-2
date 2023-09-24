@@ -7,7 +7,6 @@ axios.defaults.headers.common['x-api-key'] =
 const url =
   'https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng';
 
-// Select DOM elements
 const breedSelect = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
@@ -17,7 +16,6 @@ const breedName = document.querySelector('.cat-breed');
 const description = catInfo.querySelector('.description');
 const temperament = catInfo.querySelector('.temperament');
 
-// Function to fetch cat breeds
 function fetchBreeds() {
   loader.style.display = 'block';
   error.style.display = 'none';
@@ -38,7 +36,6 @@ function fetchBreeds() {
     });
 }
 
-// Function to populate breed select options
 function populateBreedSelect(breeds) {
   breeds.forEach(breed => {
     const option = document.createElement('option');
@@ -49,7 +46,6 @@ function populateBreedSelect(breeds) {
   breedSelect.style.display = 'block';
 }
 
-// Function to fetch cat information by breed ID
 function fetchCatByBreed(breedId) {
   loader.style.display = 'block';
   error.style.display = 'none';
@@ -70,7 +66,6 @@ function fetchCatByBreed(breedId) {
     });
 }
 
-// Function to display cat information
 function displayCatInfo(catData) {
   catImage.src = catData.url;
   breedName.textContent = catData.breeds[0].name;
@@ -79,14 +74,12 @@ function displayCatInfo(catData) {
   catInfo.style.display = 'flex';
 }
 
-// Function to show error message
 function showError() {
   error.style.display = 'block';
   breedSelect.style.display = 'none';
   catInfo.style.display = 'none';
 }
 
-// Event listener for breed selection
 breedSelect.addEventListener('change', () => {
   const selectedBreedId = breedSelect.value;
   if (selectedBreedId) {
